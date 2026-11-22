@@ -19,9 +19,12 @@ ENTRY = (
 
 
 def main() -> None:
+    text = ENTRY
+    if not 1 <= len(text) <= 280 or not text.strip():
+        raise SystemExit("entry.txt must be 1-280 non-blank characters")
     out = Path("/output")
     out.mkdir(parents=True, exist_ok=True)
-    (out / "entry.txt").write_text(ENTRY, encoding="utf-8")
+    (out / "entry.txt").write_text(text, encoding="utf-8")
 
 
 if __name__ == "__main__":
